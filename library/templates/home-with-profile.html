@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+        {% block content %}
+
+
+        <!-- Dashboard Page-->
+        <section id="dashboard-page" class="dashboard">
+            <h1>Dashboard</h1>
+             <!-- Display paragraph: If the user doesn't have any books  -->
+            {% if count == 0 %}
+                <p class="no-books">No books in database!</p>
+            <!-- Display ul: with list-items for every books if any -->
+            {% else %}
+                <ul class="my-books-list">
+
+                    {% for shelf in books %}
+
+                        {% for book in shelf %}
+                            <li class="myBooks">
+                                <h3>{{ book.book_title }}</h3>
+                                <p>Type: {{ book.book_type }}</p>
+                                <p class="img"><img src="{{ book.book_image_url }}" alt=""></p>
+                                <a class="button" href="{% url 'details book' pk=book.pk %}">Details</a>
+                            </li>
+
+                        {% endfor %}
+                        <br>
+                    {% endfor %}
+
+            </ul>
+            {% endif %}
+        </section>
+
+        {% endblock %}
