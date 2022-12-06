@@ -22,6 +22,7 @@ class Photo(StrFromFieldMixin, models.Model):
         # using this technique, in db, only the path to the image is saved
         # we can change it with:
         # upload_to='mediafiles/pet_photos/',
+        upload_to='pet_photos/',
 
         null=False,
         blank=False,
